@@ -519,12 +519,12 @@ with tab4:
         # else:
         #     df_refiltrado['cluster'] = df_refiltrado['Cluster_DBSCAN']
         #     k = len(df_refiltrado['cluster'].unique())
-        
+        df_refiltrado['cluster'] = df_refiltrado['cluster'].apply(lambda x: int(x) + 1)
         id_cluster = df_refiltrado['cluster'].unique()
         #Ordenar os clusters
         id_cluster = np.sort(id_cluster)
         #Adicionar 1 em cada id_cluster
-        id_cluster = id_cluster + 1
+        #id_cluster = id_cluster + 1
            
         # Filtro das grandes áreas de conhecimento
         clusters_selecionados = st.multiselect(
@@ -534,7 +534,7 @@ with tab4:
         )
         
         #remove 1 de cada cluster selecionado
-        clusters_selecionados = [x - 1 for x in clusters_selecionados]
+        #clusters_selecionados = [x - 1 for x in clusters_selecionados]
         
         # Filtrar os dados com base na seleção do usuário
         if clusters_selecionados:
