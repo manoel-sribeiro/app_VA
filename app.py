@@ -572,8 +572,8 @@ with tab4:
                     fill='toself',
                     mode='lines',
                     line_color='rgba(64, 64, 64, 0.7)',  # Borda branca semi-transparente
-                    name=f"Cluster {cluster_id + 1}",
-                    text=f"Cluster {cluster_id + 1}",
+                    name=f"Cluster {cluster_id}",
+                    text=f"Cluster {cluster_id}",
                     opacity=0.3,  # Transparência no preenchimento
                     hoverinfo='skip'  # Desativa o hover para o polígono
                 )
