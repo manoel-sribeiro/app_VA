@@ -324,6 +324,30 @@ with tab3:
         fig.update_layout(margin = dict(t=50, l=25, r=25, b=25))
         # Exibir o gráfico no Streamlit
         st.plotly_chart(fig)
+        #Calcular a Idade dos Docentes
+        df_filtrado['IDADE_DOC'] = 2025 - df_filtrado['AN_NASCIMENTO_DOCENTE'].astype(int) 
+        # Verificar se há dados após o filtro
+        if not filtered_df_year.empty:
+            # Criar o gráfico de violino
+            fig_violin = px.violin(
+                df_filtrado,
+                x='NOME_NO',  # Instituição
+                y='IDADE_DOC',  # Idade dos docentes
+                title=f"Distribuição da Idade dos Docentes dos PPG",
+                labels={'IDADE_DOC': 'Idade', 'NOME_NO': 'Instituição'},
+                color='NOME_NO',  # Colorir por instituição
+                box=True,  # Incluir caixa dentro do gráfico de violino
+                points="all",  # Mostrar todos os pontos (ou "outliers")
+            )
+
+            # Atualizar layout para uma melhor visualização
+            fig_violin.update_layout(
+                violingap=0.5,  # Ajuste o espaçamento entre os gráficos de violino
+                barmode='group'
+            )
+
+            # Exibir o gráfico de violino
+            st.plotly_chart(fig_violin)
 
         # Gráfico de barras e linha
         # Defina a ordem das categorias
