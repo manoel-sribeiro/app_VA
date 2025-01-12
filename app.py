@@ -557,7 +557,7 @@ with tab4:
         # 3. Adicionar figuras geométricas para os clusters
         for cluster_id in range(k):
             # Filtrar os pontos do cluster atual
-            cluster_points = df_refiltrado[df_refiltrado['cluster'] == cluster_id][["Dimensão 1", "Dimensão 2"]].values
+            cluster_points = df_refiltrado[df_refiltrado['cluster'] == cluster_id + 1][["Dimensão 1", "Dimensão 2"]].values
 
             if len(cluster_points) >= 3:  # ConvexHull exige pelo menos 3 pontos
                 hull = ConvexHull(cluster_points)
@@ -572,8 +572,8 @@ with tab4:
                     fill='toself',
                     mode='lines',
                     line_color='rgba(64, 64, 64, 0.7)',  # Borda branca semi-transparente
-                    name=f"Cluster {cluster_id}",
-                    text=f"Cluster {cluster_id}",
+                    name=f"Cluster {cluster_id + 1}",
+                    text=f"Cluster {cluster_id + 1}",
                     opacity=0.3,  # Transparência no preenchimento
                     hoverinfo='skip'  # Desativa o hover para o polígono
                 )
